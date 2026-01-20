@@ -63,15 +63,16 @@ return {
         
         -- Apri automaticamente quickfix quando ci sono errori
         vim.g.vimtex_quickfix_mode = 2
+        vim.g.vimtex_quickfix_open_on_xz = 0
         
         -- Modalità quickfix (0 = mai, 1 = sempre, 2 = solo errori)
         vim.g.vimtex_quickfix_open_on_warning = 0
-        
         -- Ignora alcuni warning comuni
         vim.g.vimtex_quickfix_ignore_filters = {
             "Underfull",
             "Overfull",
             "specifier changed to",
+            "Double superscript",
         }
         
         -- ================================================================
