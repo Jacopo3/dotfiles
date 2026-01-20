@@ -56,6 +56,23 @@ local shortcuts = {
     },
     
     {
+        category = "FOLDING (PIEGATURA CODICE)",
+        items = {
+            { key = "za", desc = "Toggle fold (apri/chiudi)" },
+            { key = "zc", desc = "Chiudi fold corrente" },
+            { key = "zo", desc = "Apri fold corrente" },
+            { key = "zC", desc = "Chiudi tutti i fold ricorsivamente" },
+            { key = "zO", desc = "Apri tutti i fold ricorsivamente" },
+            { key = "zM", desc = "Chiudi tutti i fold nel file" },
+            { key = "zR", desc = "Apri tutti i fold nel file" },
+            { key = "zj", desc = "Vai al prossimo fold" },
+            { key = "zk", desc = "Vai al fold precedente" },
+            { key = "zd", desc = "Elimina fold corrente" },
+            { key = "zE", desc = "Elimina tutti i fold nel file" },
+        }
+    },
+    
+    {
         category = "TELESCOPE (RICERCA)",
         items = {
             { key = "<leader>ff", desc = "Cerca file nel progetto" },
