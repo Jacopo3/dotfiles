@@ -1,0 +1,197 @@
+%!!	ffmpeg -i logo.svg -vf scale=64:64 favicon.png
+\ProvidesPackage{jacbr}
+
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{subcaption}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,margin=2cm,nohead,foot=0.5cm]{geometry}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{svg}
+\usepackage{siunitx-v2} %unità di misura
+
+% Rende il titolo e l'autore delle variabili
+\makeatletter
+\let\thetitle\@title
+\let\theauthor\@author
+\makeatother
+\newcommand{\theemail}{bassoriccijacopo@gmail.com}
+
+% Un po di colori
+	\definecolor{pastelgreen}{RGB}{225,245,225}
+	\definecolor{darkgreenline}{RGB}{0,120,0}
+	\definecolor{headgreen}{RGB}{0,90,30}
+	
+	\definecolor{azurelight}{RGB}{20,70,130}
+	
+	\definecolor{pastelblue}{RGB}{225,235,245}
+	\definecolor{darkblueline}{RGB}{0,80,160}
+	\definecolor{headblue}{RGB}{0,60,120}
+	
+	\definecolor{pastelblack}{RGB}{230,230,230}
+	\definecolor{darkblackline}{RGB}{20,20,20}
+	\definecolor{headblack}{RGB}{10,10,10}
+	
+\usepackage[
+	colorlinks=true,
+	linkcolor=azurelight,    % link interni 
+	urlcolor=azurelight,     % link esterni
+	citecolor=azurelight,    % citazioni
+]{hyperref}
+
+% Utilità
+\newcommand{\monthname}[1]{%
+	\ifcase#1\or
+	Gennaio\or Febbraio\or Marzo\or Aprile\or Maggio\or Giugno\or
+	Luglio\or Agosto\or Settembre\or Ottobre\or Novembre\or Dicembre
+	\fi
+}
+
+\captionsetup{tableposition=top, figureposition=bottom, font=small}
+%fare siusetup
+
+% Header
+\setlength{\headheight}{14pt}
+\setlength{\headsep}{10pt}
+\addtolength{\topmargin}{-5pt}
+
+\fancyhf{}
+\fancyhead[L]{\textbf{\thetitle} --- \monthname{\the\month} \the\year}
+\fancyhead[C]{\smash{\raisebox{-0.2cm}{\includegraphics[height=1cm]{favicon.png}}}}
+\fancyhead[R]{\textbf{\href{mailto:\theemail}{\theauthor}}}
+\renewcommand{\headrulewidth}{1pt}
+\fancyfoot[C]{\thepage}
+
+\pagestyle{fancy}
+
+%  table of contents 
+\usepackage{tocloft}
+\renewcommand{\contentsname}{Indice}
+\renewcommand{\cftdotsep}{5}
+\renewcommand{\cftsecfont}{\bfseries}
+\renewcommand{\cftsecpagefont}{\bfseries}
+\renewcommand{\cftsubsecfont}{\normalsize}
+\renewcommand{\cftsubsecpagefont}{\normalsize}
+\setlength{\cftbeforesecskip}{4pt}
+\setlength{\cftbeforesubsecskip}{2pt}
+
+% Valore assoluto
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+% Implicazione e non
+\newcommand{\imp}{\Rightarrow}
+\newcommand{\nimp}{\not\Rightarrow}
+% inversa
+\newcommand{\inv}{^{-1}}
+% Momento di inerzia
+\newcommand{\I}{\text{I}}
+% x nelle equazioni
+\newcommand{\x}{\times}
+%cappellino (unità versore)
+\newcommand{\un}[1]{\hat{U_{ #1}}}
+%derivata
+\newcommand{\dert}[1]{\frac{d #1}{dt}}
+\newcommand{\dertt}[1]{\frac{d^2 #1}{dt^2}}
+\newcommand{\der}[2]{\frac{d #1}{d #2}}
+%per le parentesi
+\newcommand{\8}{\left(}
+\newcommand{\9}{\right)}
+
+% Massimo Comune Divisore
+\newcommand{\mcd}{\text{MCD}}
+%minimo comune multiplo
+\newcommand{\mcm}{\text{mcm}}
+
+%teorema
+\tcbset{
+	teoboxstyle/.style={
+		enhanced,
+		unbreakable,
+		colback=pastelgreen,
+		colframe=black!0,
+		boxrule=0pt,
+		left=8pt,
+		right=12pt,
+		top=8pt,
+		bottom=8pt,
+		sharp corners,
+		fonttitle=\sffamily\bfseries\color{headgreen},
+		coltitle=headgreen,
+		before skip=8pt,
+		after skip=8pt,
+		overlay={
+			\draw[line width=3pt,color=darkgreenline]
+			(frame.south west) -- (frame.north west);
+		},
+	}
+}
+
+\newtcbtheorem[number within=section]{teoJ}{Teorema}
+{teoboxstyle, coltitle=headgreen, fonttitle=\sffamily\bfseries, separator sign={\ ---\ } }{alg}
+\newtcbtheorem[number within=section]{greenJ}{}
+{teoboxstyle, coltitle=headgreen, fonttitle=\sffamily\bfseries, separator sign={\ ---\ } }{alg}
+
+%definizioni
+\tcbset{
+	defboxstyle/.style={
+		enhanced,
+		unbreakable,
+		colback=pastelblue,
+		colframe=black!0,
+		boxrule=0pt,
+		left=8pt,
+		right=12pt,
+		top=8pt,
+		bottom=8pt,
+		sharp corners,
+		fonttitle=\sffamily\bfseries\color{headblue},
+		coltitle=headblue,
+		before skip=11pt,
+		after skip=11pt,
+		overlay={
+			\draw[line width=3pt,color=darkblueline]
+			(frame.south west) -- (frame.north west);
+		},
+	}
+}
+
+\newtcbtheorem[number within=section]{defJ}{Definizione}
+{defboxstyle, coltitle=headblue, fonttitle=\sffamily\bfseries, separator sign={\ ---\ } }{alg}
+\newtcbtheorem[number within=section]{blueJ}{}
+{defboxstyle, coltitle=headblue, fonttitle=\sffamily\bfseries, separator sign={\ ---\ } }{alg}
+
+%dimostrazioni
+\tcbset{
+	dimboxstyle/.style={
+		enhanced,
+		unbreakable,
+		colback=pastelblack,
+		colframe=black!0,
+		boxrule=0pt,
+		left=8pt,
+		right=12pt,
+		top=8pt,
+		bottom=8pt,
+		sharp corners,
+		fonttitle=\sffamily\bfseries\color{headblack},
+		coltitle=headblack,
+		before skip=11pt,
+		after skip=11pt,
+		overlay={
+			\draw[line width=3pt,color=darkblackline]
+			(frame.south west) -- (frame.north west);
+		},
+	}
+}
+
+\newtcbtheorem[number within=section]{dimJ}{Dimostrazione}
+{dimboxstyle, coltitle=headblack, fonttitle=\sffamily\bfseries, separator sign={\ ---\ } }{alg}
+\newtcbtheorem[number within=section]{greyJ}{}
+{dimboxstyle, coltitle=headblack, fonttitle=\sffamily\bfseries, separator sign={\ ---\ } }{alg}
