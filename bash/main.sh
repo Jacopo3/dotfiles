@@ -1,1 +1,1 @@
-source ./init.sh
+source ~/dotfiles/bash/init.sh

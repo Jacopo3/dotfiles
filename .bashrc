@@ -20,9 +20,11 @@ if [[ ! -v BASH_COMPLETION_VERSINFO && -f /usr/share/bash-completion/bash_comple
   source /usr/share/bash-completion/bash_completion
 fi
 
-# Ensure command hashing is off for mise
-set +h
-
+# Prosegue solo in shell interattive
+case $- in
+  *i*) ;;
+  *) return ;;
+esac
 
 # File system
 if command -v eza &> /dev/null; then
@@ -47,9 +49,6 @@ if command -v zoxide &> /dev/null; then
   }
 fi
 
-open() {
-  xdg-open "$@" >/dev/null 2>&1 &
-}
 
 # Directories
 alias ..='cd ..'
@@ -58,7 +57,6 @@ alias ....='cd ../../..'
 
 # Tools
 alias d='docker'
-#alias r='rails'
 n() { if [ "$#" -eq 0 ]; then nvim .; else nvim "$@"; fi; }
 
 # Git
@@ -82,3 +80,4 @@ transcode-video-4K() {
   ffmpeg -i $1 -c:v libx265 -preset slow -crf 24 -c:a aac -b:a 192k ${1%.*}-optimized.mp4
 }
 
+source ~/dotfiles/bash/main.sh

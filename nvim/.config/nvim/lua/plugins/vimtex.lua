@@ -36,6 +36,7 @@ return {
                 "-file-line-error",        -- Errori con numero linea
                 "-synctex=1",             -- Abilita synctex
                 "-interaction=nonstopmode", -- Non fermarsi agli errori
+				"-f"						--Test perché rompe
             },
         }
         
