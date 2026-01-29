@@ -1,11 +1,6 @@
 -- ============================================================================
 -- lazy.lua - Configurazione del gestore plugin lazy.nvim
 -- ============================================================================
--- lazy.nvim è un gestore di plugin moderno per Neovim che:
--- - Carica i plugin solo quando necessario (lazy loading)
--- - Gestisce automaticamente le dipendenze
--- - Fornisce un'interfaccia per aggiornare i plugin
--- ============================================================================
 
 -- Path dove lazy.nvim verrà installato
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -28,18 +23,18 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Configura e carica tutti i plugin
 require("lazy").setup({
-    -- Carica tutti i file nella directory lua/plugins/
-    -- Ogni file in quella directory definirà uno o più plugin
-    { import = "plugins" },
+	-- Carica tutti i file nella directory lua/plugins/
+	-- Ogni file in quella directory definirà uno o più plugin
+	{ import = "plugins" },
 }, {
-    -- Opzioni di lazy.nvim
-    checker = {
-        enabled = true,      -- Controlla automaticamente aggiornamenti
-        notify = true,      -- Mostrare notifiche per aggiornamenti
-    },
-    change_detection = {
-        notify = true,      -- Notificare quando i file di config cambiano
-    },
+	-- Opzioni di lazy.nvim
+	checker = {
+		enabled = true,      -- Controlla automaticamente aggiornamenti
+		notify = true,      -- Mostrare notifiche per aggiornamenti
+	},
+	change_detection = {
+		notify = true,      -- Notificare quando i file di config cambiano
+	},
 })
 
 -- ============================================================================

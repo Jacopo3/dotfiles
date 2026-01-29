@@ -15,7 +15,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Carica le opzioni generali di Neovim
 -- Contiene impostazioni come numeri di riga, indentazione, ecc.
 require("config.options")
 
@@ -24,8 +23,7 @@ require("config.options")
 require("config.keymaps")
 
 -- Inizializza lazy.nvim (gestore plugin)
--- Questo deve essere caricato prima di qualsiasi plugin
 require("config.lazy")
 
--- Carica il cheat sheet (non è un plugin, è un modulo locale)
+-- Carica il cheat sheet
 require("config.cheatsheet").setup()

@@ -12,9 +12,9 @@ local keymap = vim.keymap
 
 -- Funzione helper per impostare keymaps con opzioni default
 local function map(mode, lhs, rhs, opts)
-    opts = opts or {}
-    opts.silent = opts.silent ~= false
-    keymap.set(mode, lhs, rhs, opts)
+	opts = opts or {}
+	opts.silent = opts.silent ~= false
+	keymap.set(mode, lhs, rhs, opts)
 end
 
 -- ============================================================================
