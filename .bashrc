@@ -5,9 +5,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-#alias ls='ls --color=auto'
 alias grep='grep --color=auto'
-PS1='[\u@\h \W]\$ '
+PS1='\[\e[31m\]┌[\[\e[36m\]\h\[\e[31m\]]─[\[\e[33m\]\D{%H:%M-%d/%m}\[\e[31m\]]─[\[\e[35m\]\w\[\e[31m\]]\n└╼\[\e[32m\]\u\[\e[33m\]\$\[\e[0m\] '
 
 # History control
 shopt -s histappend
@@ -29,7 +28,7 @@ esac
 # File system
 if command -v eza &> /dev/null; then
   alias ls='eza -lh --group-directories-first --icons=auto'
-  alias lsa='ls -a'
+  alias la='ls -a'
   alias lt='eza --tree --level=2 --long --icons --git'
   alias lta='lt -a'
 fi
